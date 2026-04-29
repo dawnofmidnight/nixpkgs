@@ -40,7 +40,7 @@
   libGL,
 
   mediaSupport ? true,
-  ffmpeg_7,
+  ffmpeg_8,
 
   audioSupport ? mediaSupport,
 
@@ -99,10 +99,10 @@ let
     ++ lib.optionals pipewireSupport [ pipewire ]
     ++ lib.optionals pulseaudioSupport [ libpulseaudio ]
     ++ lib.optionals libvaSupport [ libva ]
-    ++ lib.optionals mediaSupport [ ffmpeg_7 ]
+    ++ lib.optionals mediaSupport [ ffmpeg_8 ]
   );
 
-  version = "15.0.21";
+  version = "16.0a11";
 
   sources = {
     x86_64-linux = fetchurl {
@@ -112,17 +112,17 @@ let
         "https://tor.eff.org/dist/torbrowser/${version}/tor-browser-linux-x86_64-${version}.tar.xz"
         "https://tor.calyxinstitute.org/dist/torbrowser/${version}/tor-browser-linux-x86_64-${version}.tar.xz"
       ];
-      hash = "sha256-kd1QoBi3Y5bDvrbc3yY/dFnaqsL7JelZ6AdFsVv8NZ8=";
+      hash = "sha256-T2q286IP9LWOBdq5014cB+ILDwBGxDLIXyfZchM5F0k=";
     };
 
-    i686-linux = fetchurl {
+    aarch64-linux = fetchurl {
       urls = [
-        "https://archive.torproject.org/tor-package-archive/torbrowser/${version}/tor-browser-linux-i686-${version}.tar.xz"
-        "https://dist.torproject.org/torbrowser/${version}/tor-browser-linux-i686-${version}.tar.xz"
-        "https://tor.eff.org/dist/torbrowser/${version}/tor-browser-linux-i686-${version}.tar.xz"
-        "https://tor.calyxinstitute.org/dist/torbrowser/${version}/tor-browser-linux-i686-${version}.tar.xz"
+        "https://archive.torproject.org/tor-package-archive/torbrowser/${version}/tor-browser-linux-aarch64-${version}.tar.xz"
+        "https://dist.torproject.org/torbrowser/${version}/tor-browser-linux-aarch64-${version}.tar.xz"
+        "https://tor.eff.org/dist/torbrowser/${version}/tor-browser-linux-aarch64-${version}.tar.xz"
+        "https://tor.calyxinstitute.org/dist/torbrowser/${version}/tor-browser-linux-aarch64-${version}.tar.xz"
       ];
-      hash = "sha256-LWoAry/tJFvIlE0sDsUesHY+ziYnjqz4K8YEHIjrE0Y=";
+      hash = "sha256-OCPLqnwi2fR6pncOiEQwfY3hdnlMmaA22RMpZ5/cOPw=";
     };
   };
 
@@ -220,7 +220,7 @@ stdenv.mkDerivation rec {
     ''}
 
     # Fixup paths to pluggable transports.
-    substituteInPlace TorBrowser/Data/Tor/torrc-defaults \
+    substituteInPlace TorBrowser/Tor/torrc-defaults \
       --replace-fail './TorBrowser' "$TBB_IN_STORE/TorBrowser"
 
     # Prepare for autoconfig.
@@ -245,7 +245,7 @@ stdenv.mkDerivation rec {
     // User should never change these.  Locking prevents these
     // values from being written to prefs.js, avoiding Store
     // path capture.
-    lockPref("extensions.torlauncher.torrc-defaults_path", "$TBB_IN_STORE/TorBrowser/Data/Tor/torrc-defaults");
+    lockPref("extensions.torlauncher.torrc-defaults_path", "$TBB_IN_STORE/TorBrowser/Tor/torrc-defaults");
     lockPref("extensions.torlauncher.tor_path", "$TBB_IN_STORE/TorBrowser/Tor/tor");
 
     // Optionally use IPC for communicating with Tor
@@ -288,7 +288,7 @@ stdenv.mkDerivation rec {
     # relative to torrc-defaults_path but if we do not hard-code them
     # here, these paths end up being written to the torrc in the user's
     # state dir.
-    cat >>TorBrowser/Data/Tor/torrc-defaults <<EOF
+    cat >>TorBrowser/Tor/torrc-defaults <<EOF
     GeoIPFile $TBB_IN_STORE/TorBrowser/Data/Tor/geoip
     GeoIPv6File $TBB_IN_STORE/TorBrowser/Data/Tor/geoip6
     EOF
@@ -333,6 +333,7 @@ stdenv.mkDerivation rec {
     inherit sources;
     updateScript = callPackage ./update.nix {
       inherit pname version meta;
+      prerelease = true;
     };
   };
 
