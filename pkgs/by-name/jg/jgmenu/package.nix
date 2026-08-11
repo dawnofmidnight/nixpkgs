@@ -66,6 +66,7 @@ stdenv.mkDerivation (finalAttrs: {
   passthru.updateScript = gitUpdater { rev-prefix = "v"; };
 
   meta = {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
     homepage = "https://github.com/jgmenu/jgmenu";
     description = "Small X11 menu intended to be used with openbox and tint2";
     license = lib.licenses.gpl2Plus;

@@ -70,6 +70,7 @@ lib.checkListOfEnum "${pname}: theme tweaks" validTweaks tweaks
     '';
 
     meta = {
+      problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
       description = "Material Design theme for GNOME/GTK based desktop environments";
       homepage = "https://github.com/vinceliuice/Orchis-theme";
       license = lib.licenses.gpl3Plus;

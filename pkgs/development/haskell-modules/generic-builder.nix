@@ -179,6 +179,7 @@ in
   testTargets ? lib.strings.splitString " " testTarget,
   testFlags ? [ ],
   broken ? false,
+  problems ? { },
   preCompileBuildDriver ? null,
   postCompileBuildDriver ? null,
   preUnpack ? null,
@@ -1096,6 +1097,7 @@ lib.fix (
         inherit homepage platforms;
       }
       // optionalAttrs (args ? broken) { inherit broken; }
+      // optionalAttrs (args ? problems) { inherit problems; }
       // optionalAttrs (args ? description) { inherit description; }
       // optionalAttrs (args ? license) { inherit license; }
       // optionalAttrs (args ? maintainers) { inherit maintainers; }

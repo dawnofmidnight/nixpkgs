@@ -170,10 +170,16 @@ let
       baseName,
       dir ? "tools/faust2appls",
       scripts ? [ baseName ],
+      extraMeta ? { },
       ...
     }@args:
 
-    args
+    (removeAttrs args [
+      "baseName"
+      "dir"
+      "scripts"
+      "extraMeta"
+    ])
     // {
       pname = baseName;
 
@@ -201,9 +207,12 @@ let
         done
       '';
 
-      meta = meta // {
-        description = "The ${baseName} script, part of faust functional programming language for realtime audio signal processing";
-      };
+      meta =
+        meta
+        // extraMeta
+        // {
+          description = "The ${baseName} script, part of faust functional programming language for realtime audio signal processing";
+        };
     };
 
   # Some 'faust2appl' scripts, such as faust2alsa, run faust to

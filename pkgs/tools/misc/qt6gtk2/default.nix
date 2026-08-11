@@ -39,6 +39,7 @@ stdenv.mkDerivation (finalAttrs: {
   passthru.updateScript = nix-update-script { };
 
   meta = {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
     description = "GTK+2.0 integration plugins for Qt6";
     license = lib.licenses.gpl2Plus;
     homepage = "https://www.opencode.net/trialuser/qt6gtk2";

@@ -50,6 +50,7 @@ stdenv.mkDerivation (finalAttrs: {
     url = "https://github.com/uim/uim/releases/download/${finalAttrs.version}/uim-${finalAttrs.version}.tar.bz2";
     hash = "sha256-Z/Dl+kKSpTPtxvmLhC32DFMaic+C0DNqThq3IgKrjIM=";
     meta = {
+      problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
       homepage = "https://github.com/uim/uim/";
     };
   };
@@ -144,6 +145,7 @@ stdenv.mkDerivation (finalAttrs: {
   dontUseCmakeConfigure = true;
 
   meta = {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
     inherit (finalAttrs.src.meta) homepage;
     description = "Multilingual input method framework";
     license = lib.licenses.bsd3;

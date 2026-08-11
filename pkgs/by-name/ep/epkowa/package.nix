@@ -128,6 +128,7 @@ stdenv.mkDerivation rec {
   passthru.plugins = callPackages ./plugins.nix { inherit common_meta; };
 
   meta = common_meta // {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
     description = "sane-epkowa backend for some epson scanners";
     longDescription = ''
       Includes gui-less iscan (aka. Image Scan! for Linux).

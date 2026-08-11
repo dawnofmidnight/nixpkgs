@@ -25,6 +25,7 @@ let
   pname = "vesta-viewer";
   version = "3.5.8";
   meta = {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
     description = "3D visualization program for structural models, volumetric data such as electron/nuclear densities, and crystal morphologies";
     homepage = "https://jp-minerals.org/vesta/";
     license = lib.licenses.unfree;

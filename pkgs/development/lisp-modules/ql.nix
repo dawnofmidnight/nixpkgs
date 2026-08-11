@@ -26,6 +26,7 @@ let
       });
       cl-cairo2-xlib = super.cl-cairo2-xlib.overrideLispAttrs (o: {
         nativeLibs = [ pkgs.gtk2-x11 ];
+        meta.problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
       });
       cl-freetype2 = super.cl-freetype2.overrideLispAttrs (o: {
         nativeLibs = [ pkgs.freetype ];
@@ -37,6 +38,7 @@ let
       });
       cl-gtk2-gdk = super.cl-gtk2-gdk.overrideLispAttrs (o: {
         nativeLibs = [ pkgs.gtk2-x11 ];
+        meta.problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
       });
       cl-gtk2-glib = super.cl-gtk2-glib.overrideLispAttrs (o: {
         nativeLibs = [ pkgs.glib ];
@@ -46,6 +48,9 @@ let
       });
       cl-rsvg2 = super.cl-rsvg2.overrideLispAttrs (o: {
         nativeLibs = [ pkgs.librsvg ];
+      });
+      cl-rsvg2-pixbuf = super.cl-rsvg2-pixbuf.overrideLispAttrs (o: {
+        meta.problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
       });
       cl-cffi-gtk-gdk = super.cl-cffi-gtk-gdk.overrideLispAttrs (o: {
         nativeLibs = [ pkgs.gtk3 ];

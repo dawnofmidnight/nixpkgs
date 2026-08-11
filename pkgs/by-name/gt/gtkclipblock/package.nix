@@ -53,6 +53,7 @@ stdenv.mkDerivation {
   dontUseCmakeConfigure = true;
 
   meta = {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
     description = "LD_PRELOAD hack to prevent GTK programs from interacting with the primary clipboard";
     homepage = "https://github.com/notpeelz/gtkclipblock";
     license = lib.licenses.lgpl3Only;

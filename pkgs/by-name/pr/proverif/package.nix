@@ -63,6 +63,7 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   meta = {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
     description = "Cryptographic protocol verifier in the formal model";
     homepage = "https://bblanche.gitlabpages.inria.fr/proverif/";
     license = lib.licenses.gpl2;

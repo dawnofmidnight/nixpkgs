@@ -188,6 +188,7 @@ stdenv.mkDerivation {
   passthru.updateScript = ./update.sh;
 
   meta = {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
     inherit mainProgram;
     description = "Allows you to connect to your Omnissa Horizon virtual desktop";
     homepage = "https://www.omnissa.com/products/horizon-8/";

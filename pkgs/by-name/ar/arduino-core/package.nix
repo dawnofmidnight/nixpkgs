@@ -41,5 +41,5 @@ buildFHSEnv {
 
   runScript = "arduino";
 
-  meta = arduino-core-unwrapped.meta;
+  meta = arduino-unwrapped.meta;
 }

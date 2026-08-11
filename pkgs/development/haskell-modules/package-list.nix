@@ -22,7 +22,11 @@ let
     lib.concatStringsSep "\n" (lib.filter (x: x != "") (lib.mapAttrsToList pkgLine haskellPackages))
   );
 in
-runCommand "hackage-package-list" { }
+runCommand "hackage-package-list"
+  {
+    # TODO: we can't ship this, i don't think.
+    meta.problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
+  }
   # This command will make a join between all packages on hackage and haskellPackages.*.
   # It ignores packages marked as broken (according to hydraPlatforms)
   # It creates a valid csv file which can be uploaded to hackage.haskell.org.

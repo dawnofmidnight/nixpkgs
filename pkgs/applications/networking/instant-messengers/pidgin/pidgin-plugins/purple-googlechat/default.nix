@@ -34,6 +34,7 @@ stdenv.mkDerivation {
   };
 
   meta = {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
     homepage = "https://github.com/EionRobb/purple-googlechat";
     description = "Native Google Chat support for pidgin";
     license = lib.licenses.gpl3Plus;

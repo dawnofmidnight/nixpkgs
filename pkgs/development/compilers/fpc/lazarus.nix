@@ -27,6 +27,8 @@
 #  1. the build date is embedded in the binary through `$I %DATE%` - we should dump that
 
 let
+  # when updating this, update `libqtpas` as well. we cannot `inherit` as it
+  # triggers the meta.problems validation.
   version = "4.4-0";
 
   # as of 2.0.10 a suffix is being added. That may or may not disappear and then
@@ -154,5 +156,6 @@ stdenv.mkDerivation rec {
     license = lib.licenses.gpl2Plus;
     maintainers = with lib.maintainers; [ raskin ];
     platforms = lib.platforms.linux;
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
   };
 }

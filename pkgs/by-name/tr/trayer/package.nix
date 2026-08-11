@@ -42,6 +42,7 @@ stdenv.mkDerivation rec {
   makeFlags = [ "PREFIX=$(out)" ];
 
   meta = {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
     homepage = "https://github.com/sargon/trayer-srg";
     license = lib.licenses.mit;
     description = "Lightweight GTK2-based systray for UNIX desktop";

@@ -46,6 +46,7 @@ stdenv.mkDerivation (finalAttrs: {
   enableParallelBuilding = false; # Fails to generate machine.h in time.
 
   meta = {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
     description = "GUI application for removing noise (hiss, pops and clicks) from audio files";
     homepage = "https://github.com/AlisterH/gwc/";
     changelog = "https://github.com/AlisterH/gwc/blob/${finalAttrs.version}/ChangeLog";

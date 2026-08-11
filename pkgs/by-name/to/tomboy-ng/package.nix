@@ -76,6 +76,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   meta = {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
     description = "Note taking app that works and synchronises between Linux, Windows and macOS";
     homepage = "https://github.com/tomboy-notes/tomboy-ng";
     license = lib.licenses.mit;

@@ -92,6 +92,7 @@ stdenv.mkDerivation (finalAttrs: {
   doCheck = true;
 
   meta = {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
     description = "X11 event recording and replay tool";
     longDescription = ''
       Xnee is a suite of programs that can record, replay and distribute

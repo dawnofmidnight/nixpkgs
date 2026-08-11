@@ -1400,6 +1400,8 @@ with haskellLib;
     preCheck = old.preCheck or "" + ''
       tar --one-top-level=../chart --strip-components=1 -xf ${self.Chart.src}
     '';
+    # 2026-08-11: GTK 2 is being removed from Nixpkgs.
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
   }) (addExtraLibrary self.QuickCheck super.Chart-tests);
 
   # 2026-01-17: too strict bounds on QuickCheck < 2.15
@@ -3016,6 +3018,50 @@ with haskellLib;
     revision = null;
     editedCabalFile = null;
   } (warnAfterVersion "0.3.0.0" super.botan-bindings);
+
+  # 2026-08-11: GTK 2 is being removed from Nixpkgs.
+  Chart-gtk = overrideCabal {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
+  } super.Chart-gtk;
+  cairo-appbase = overrideCabal {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
+  } super.cairo-appbase;
+  diagrams-gtk = overrideCabal {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
+  } super.diagrams-gtk;
+  gtk = overrideCabal {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
+  } super.gtk;
+  gtk-jsinput = overrideCabal {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
+  } super.gtk-jsinput;
+  gtk-simple-list-view = overrideCabal {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
+  } super.gtk-simple-list-view;
+  gtk-toggle-button-list = overrideCabal {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
+  } super.gtk-toggle-button-list;
+  indian-language-font-converter = overrideCabal {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
+  } super.indian-language-font-converter;
+  libnotify = overrideCabal {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
+  } super.libnotify;
+  nc-indicators = overrideCabal {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
+  } super.nc-indicators;
+  osdkeys = overrideCabal {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
+  } super.osdkeys;
+  qr = overrideCabal {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
+  } super.qr;
+  yi = overrideCabal {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
+  } super.yi;
+  yi-frontend-pango = overrideCabal {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
+  } super.yi-frontend-pango;
 }
 // import ./configuration-tensorflow.nix { inherit pkgs haskellLib; } self super
 

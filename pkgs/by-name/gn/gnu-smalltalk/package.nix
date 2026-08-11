@@ -81,6 +81,7 @@ stdenv.mkDerivation (finalAttrs: {
   doCheck = false;
 
   meta = {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
     description = "Free implementation of the Smalltalk-80 language";
     longDescription = ''
       GNU Smalltalk is a free implementation of the Smalltalk-80 language. It

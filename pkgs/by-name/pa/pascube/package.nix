@@ -72,6 +72,7 @@ clangStdenv.mkDerivation (finalAttrs: {
   passthru.updateScript = nix-update-script { };
 
   meta = {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
     description = "Simple OpenGL spinning cube written in Pascal";
     homepage = "https://github.com/benjamimgois/pascube";
     changelog = "https://github.com/benjamimgois/pascube/releases/tag/${finalAttrs.version}";

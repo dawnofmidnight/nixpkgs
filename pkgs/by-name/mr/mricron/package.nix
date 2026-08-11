@@ -78,6 +78,7 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   meta = {
+    problems.removal.message = "GTK 2 has reached end of life and will soon be removed from Nixpkgs. All dependents must be migrated off or dropped. More information can be found in the tracking issue: https://github.com/NixOS/nixpkgs/issues/410814";
     description = "Application to display NIfTI medical imaging data";
     homepage = "https://people.cas.sc.edu/rorden/mricron/index.HTML";
     license = lib.licenses.bsd1;
