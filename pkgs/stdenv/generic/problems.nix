@@ -124,7 +124,7 @@ rec {
     removal = {
       manualAllowed = true;
       isUnique = true;
-      nixpkgsInternalUseAllowed = false;
+      nixpkgsInternalUseAllowed = true;
       automatic = null;
     };
     deprecated = {

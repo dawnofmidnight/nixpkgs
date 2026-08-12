@@ -50,6 +50,14 @@ let
                 kind = "broken";
                 handler = "error";
               }
+              # We explicitly want to allow removals to be used in Nixpkgs, as
+              # the goal is for these warnings to propagate to end users. If
+              # we don't ignore this here, evaluation in CI fails due to
+              # warnings being present.
+              {
+                kind = "removal";
+                handler = "ignore";
+              }
             ];
             inherit attrPathsDisallowedForInternalUse;
 
