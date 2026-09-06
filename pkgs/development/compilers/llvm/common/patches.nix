@@ -20,6 +20,16 @@
       path = ../18;
     }
   ];
+  "lldb/gnu-install-dirs.patch" = [
+    {
+      before = "23";
+      path = ../18;
+    }
+    {
+      after = "23";
+      path = ../23;
+    }
+  ];
   "llvm/gnu-install-dirs.patch" = [
     {
       after = "23";
