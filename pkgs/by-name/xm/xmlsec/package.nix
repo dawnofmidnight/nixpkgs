@@ -9,6 +9,7 @@
   openssl,
   nss,
   lib,
+  python3Packages,
   runCommandCC,
   writeText,
 }:
@@ -76,34 +77,37 @@ stdenv.mkDerivation (finalAttrs: {
     moveToOutput "lib/xmlsec1Conf.sh" "$dev"
   '';
 
-  passthru.tests.libxmlsec1-crypto =
-    runCommandCC "libxmlsec1-crypto-test"
-      {
-        nativeBuildInputs = [ pkg-config ];
-        buildInputs = [
-          finalAttrs.finalPackage
-          libxml2
-          libxslt
-          libtool
-        ];
-      }
-      ''
-        $CC $(pkg-config --cflags --libs xmlsec1) -o crypto-test ${writeText "crypto-test.c" ''
-          #include <xmlsec/xmlsec.h>
-          #include <xmlsec/crypto.h>
+  passthru.tests = {
+    python-xmlsec = python3Packages.xmlsec;
+    libxmlsec1-crypto =
+      runCommandCC "libxmlsec1-crypto-test"
+        {
+          nativeBuildInputs = [ pkg-config ];
+          buildInputs = [
+            finalAttrs.finalPackage
+            libxml2
+            libxslt
+            libtool
+          ];
+        }
+        ''
+          $CC $(pkg-config --cflags --libs xmlsec1) -o crypto-test ${writeText "crypto-test.c" ''
+            #include <xmlsec/xmlsec.h>
+            #include <xmlsec/crypto.h>
 
-          int main(int argc, char **argv) {
-            return xmlSecInit() ||
-              xmlSecCryptoDLLoadLibrary(argc > 1 ? argv[1] : 0) ||
-              xmlSecCryptoInit();
-          }
-        ''}
+            int main(int argc, char **argv) {
+              return xmlSecInit() ||
+                xmlSecCryptoDLLoadLibrary(argc > 1 ? argv[1] : 0) ||
+                xmlSecCryptoInit();
+            }
+          ''}
 
-        for crypto in "" gnutls nss openssl; do
-          ./crypto-test $crypto
-        done
-        touch $out
-      '';
+          for crypto in "" gnutls nss openssl; do
+            ./crypto-test $crypto
+          done
+          touch $out
+        '';
+  };
 
   meta = {
     description = "XML Security Library in C based on libxml2";
