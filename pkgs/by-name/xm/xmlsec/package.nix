@@ -18,6 +18,8 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "xmlsec";
   version = "1.3.7";
 
+  __structuredAttrs = true;
+
   src = fetchurl {
     urls = [
       "https://www.aleksey.com/xmlsec/download/xmlsec1-${finalAttrs.version}.tar.gz"
@@ -39,13 +41,15 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   postPatch = ''
-    substituteAllInPlace src/dl.c
+    substituteInPlace src/dl.c --replace-fail "@out@" "$out"
   '';
 
   outputs = [
     "out"
     "dev"
   ];
+
+  strictDeps = true;
 
   nativeBuildInputs = [ pkg-config ];
 
